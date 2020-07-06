@@ -9,6 +9,7 @@ const replaceAllButton = document.querySelector(".replace-all-button")
 // Later you will need an OUTER LOOP to loop over the individual elements within
 // this array.
 const rowElements = document.querySelectorAll(".row")
+const currentRowElement = document.querySelectorAll(".cell")
 
 // When you call the function belwo, it will get and return an INNER ARRAY
 // containing the cell elements for a given row.
@@ -21,6 +22,30 @@ function getCellElements (currentRowElement) {
 
 
 // YOUR CODE GOES HERE
+
+// Add a click event listener to the replaceAllButton.
+replaceAllButton.addEventListener('click', function(){
+    let findInputValue = findInput.value
+    console.log(findInputValue)
+    let replaceInputValue = replaceInput.value 
+    console.log(replaceInputValue)
+    for (outerLoop = 0 ; outerLoop < rowElements.length; outerLoop++){ 
+        let cellElements = getCellElements(rowElements[outerLoop])
+        for (innerLoop = 0; innerLoop < cellElements.length; innerLoop++) { 
+            if (cellElements[innerLoop].innerHTML.includes(findInputValue)) {
+                cellElements[innerLoop].innerHTML = cellElements[innerLoop].innerHTML.replace(findInputValue, replaceInputValue)
+            }
+            console.log(findInputValue + ' is found ')
+        }
+    }
+})
+//X On click but outside of a loop, assign the values of the two input textboxes ( findInput and replaceInput), so that you are only retrieving these values once per click.
+//X Write a loop which loops over the rowElements array (which is already provided in the starter code).
+// Inside this loop, use the getCellElements() function (already provided in the starter code) and assign the resulting array of cell elements to a variable.
+// Write a nested loop which loops over the array of cell elements.
+// For each cell element, check if a cell contains the user-provided search string. Use the string method includes().
+// If a cell does contain the user-provided search string, use innerHTML and the string method replace() to replace the user-provided search string with the user-provided replacement string.
+// In all your loops, avoid using low-meaning index variables like "i" and "j".
 
 
 // One last thing: dedicate very careful attention to using variables and
